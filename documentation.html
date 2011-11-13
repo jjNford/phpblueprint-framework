@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+    
+    <!-- Meta Data -->
+    <meta charset="utf-8">
+
+    <!-- Page Information -->
+    <title>Documentation</title>
+    <meta name="description" content="PHP Blueprint Framework Documentation.">
+    <meta name="author" content="JJ Ford">
+
+    <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <!-- CSS -->
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans|Ubuntu|Antic' rel='stylesheet' type='text/css'>
+    <style>
+        html, body, div, span, applet, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, acronym, address, big, cite, code,
+        del, dfn, em, img, ins, kbd, q, s, samp,
+        small, strike, strong, sub, sup, tt, var,
+        b, u, i, center,
+        dl, dt, dd, ol, ul, li,
+        fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td,
+        article, aside, canvas, details, embed, 
+        figure, figcaption, footer, header, hgroup, 
+        menu, nav, output, ruby, section, summary,
+        time, mark, audio, video {
+        	margin: 0;
+        	padding: 0;
+        	border: 0;
+        	font-size: 100%;
+        	font: inherit;
+        	vertical-align: baseline;
+        }
+        article, aside, details, figcaption, figure, 
+        footer, header, hgroup, menu, nav, section {
+        	display: block;
+        }
+        body {
+        	line-height: 1;
+        }
+        ol, ul {
+        	list-style: none;
+        }
+        blockquote, q {
+        	quotes: none;
+        }
+        blockquote:before, blockquote:after,
+        q:before, q:after {
+        	content: '';
+        	content: none;
+        }
+        table {
+        	border-collapse: collapse;
+        	border-spacing: 0;
+        }
+
+        html {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            font-family: 'PT Sans', Verdana, Helvetica, Arial, sans-serif;
+            text-shadow: 0px 0px 100px #fff;
+            color: #fff;
+            background: #004785;
+            background-image: -ms-radial-gradient(center, circle cover, #1A90C0 0%, #004785 100%); /* IE10 */ 
+            background-image: -moz-radial-gradient(center, circle cover, #1A90C0 0%, #004785 100%); /* Mozilla Firefox */
+            background-image: -o-radial-gradient(center, circle cover, #1A90C0 0%, #004785 100%); /* Opera */ 
+            background-image: -webkit-gradient(radial, center center, 0, center center, 501, color-stop(0, #1A90C0), color-stop(1, #004785)); /* Webkit (Safari/Chrome 10) */ 
+            background-image: -webkit-radial-gradient(center, circle cover, #1A90C0 0%, #004785 100%); /* Webkit (Chrome 11+) */
+            background-image: radial-gradient(center, circle cover, #1A90C0 0%, #004785 100%); /* Proposed W3C Markup */ 
+        }
+
+        header {
+            margin-top: 100px;
+            margin-bottom: 50px;
+        }
+
+        #title {
+            font-family: 'Ubunut', Verdana, Helvetica, Arial, sans-serif;
+            font-size: 40px;
+        }
+
+        #title span {
+            color: #004e8c;
+        }
+
+        #title, #sub_title {
+            text-align: center;
+        }
+
+        #sub_title {
+            padding-top: 10px;
+            font-size: 14px;
+            letter-spacing: 3px;
+        }
+
+        #documentation {
+            width: 600px;
+            margin: 0 auto;
+            font-size: 12px;
+            text-shadow: none;
+            line-height: 20px;
+        }
+
+        #documentation ul li {
+            margin: 30px 0;
+        }
+
+        #documentation pre {
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #aaa;
+        }
+    </style>    
+        
+</head>
+<body>
+            
+    <header>
+        <div id="title">php<span>blueprint</span>framework</div>
+        <div id="sub_title">simple, flexible, expandable</div> 
+    </header>
+
+    <article id="documentation">
+        
+        <section id="rules">
+            <ul>
+                <li>
+                    Naming Conventions:<br />
+                    1. All files except view files must start with an uppercase followed by all lowercase.<br />
+                    2. All controller classes must have the suffix '_Controller' and follow rule 1.<br /> 
+                    -  &nbsp;Example, 'MyController' in the file 'Mycontroller.php' is 'class Mycontroller_Controller extends Controller'.<br />
+                    3. The same is done for models as for controllers in rule 2.<br />
+                    -  &nbsp;Example, 'MyModel' in the file 'Mymodel.php' is 'class Mymodel extends Model'.<br />
+                    4. Library class names must follow rule 1.
+                </li>
+                
+                <li>All configuration file's $config variable's will be loaded into the parent model and controller classes as objects.</li>
+    
+                <li>To access the configuration variable '$config['one']['two']' inside a model or controller use:
+                    <pre>'$this->config->one->two'</pre>
+                </li>
+    
+                <li>Controller classes extend 'Controller' and Model classes extend 'Model'.  Don't forget to call the parent constructor to get the 'load' and 'config' objects.</li>
+    
+                <li>To load a library object use: 
+                    <pre>'$this->load->library('my_library')'</pre>
+                </li>
+    
+                <li>To load a model use 
+                    <pre>'$this->load->model('my_model')'</pre>
+                </li>
+    
+                <li>To load a controller use: 
+                    <pre>'$this->load->controller('my_controller')'</pre>
+                </li>
+    
+                <li>To load a view use: 
+                    <pre>'$this->load->view('my_view')'</pre>
+                </li>
+    
+                <li>An associative array of data can be passed to the view and its key's will be extracted into variables to be used by the view by using:
+                    <pre>'$this->load->view('my_view', $my_data_array)'</pre>
+                </li>
+            </ul>
+        </section>        
+    </article>
+
+</body>
+</html>
